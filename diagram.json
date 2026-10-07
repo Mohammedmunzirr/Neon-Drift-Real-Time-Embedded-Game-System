@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "author": "Ahmad Saad",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -319.8, "left": -45.2, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -48, "left": 100.84, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -188.86,
+      "left": 317.03,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -90.6,
+      "left": -156.4,
+      "attrs": {}
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 85.1, "left": -144.2, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 137.6,
+      "left": -364,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 140.6,
+      "left": -28.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -61.91,
+      "left": 283.86,
+      "rotate": 90,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 100.8,
+      "left": 293.7,
+      "rotate": 90,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 198.9,
+      "left": 311.7,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "bb1:bp.25", "red", [ "v-57.6", "h152.15" ] ],
+    [ "esp:GND.2", "bb1:bn.24", "black", [ "h48", "v-104.3" ] ],
+    [ "oled1:VCC", "bb1:bp.23", "red", [ "v-38.4", "h-124.65" ] ],
+    [ "oled1:GND", "bb1:bn.22", "black", [ "v-28.8", "h-124.8" ] ],
+    [ "ring1:GND", "bb1:bn.21", "black", [ "h0" ] ],
+    [ "ring1:VCC", "bb1:bp.24", "red", [ "h0" ] ],
+    [ "rgb1:COM", "bb1:bn.23", "black", [ "v0.1", "h-47.6" ] ],
+    [ "joystick1:GND", "bb1:bn.1", "black", [ "h0" ] ],
+    [ "joystick1:VCC", "bb1:bp.1", "red", [ "v13.2", "h-78.2", "v-171.9" ] ],
+    [ "pot1:VCC", "bb1:bp.2", "red", [ "h47.2", "v-124.8", "h46.4" ] ],
+    [ "pot1:GND", "bb1:bn.3", "black", [ "v19.2", "h67.2", "v-144", "h56" ] ],
+    [ "ldr1:VCC", "bb1:bp.3", "red", [ "h28.8", "v-288" ] ],
+    [ "ldr1:GND", "bb1:bn.4", "black", [ "h19.2", "v-278.8" ] ],
+    [ "oled1:SDA", "esp:21", "blue", [ "h105.67", "v278.4", "h-268.8", "v-67.2" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v-19.2", "h134.7", "v134.4", "h-278.4", "v67.2" ] ],
+    [ "joystick1:HORZ", "esp:34", "green", [ "h115.2", "v48" ] ],
+    [ "joystick1:VERT", "esp:35", "blue", [ "h105.6", "v48" ] ],
+    [ "joystick1:SEL", "esp:15", "purple", [ "h125", "v48" ] ],
+    [ "pot1:SIG", "esp:32", "green", [ "v57.6", "h182", "v-172.8" ] ],
+    [ "ldr1:AO", "esp:33", "green", [ "v47.3", "h278.4", "v-182.4" ] ],
+    [ "btn1:1.l", "bb1:bn.7", "black", [ "v-48", "h84.8" ] ],
+    [ "btn1:2.l", "esp:4", "blue", [ "h0", "v19.4", "h240", "v-96" ] ],
+    [ "ring1:DIN", "esp:13", "blue", [ "h-9.6", "v0", "h-38.4", "v182.4", "h-134.4", "v-86.4" ] ],
+    [ "esp:25", "rgb1:R", "orange", [ "v0", "h-9.45", "v163.2", "h153.6", "v-19.2" ] ],
+    [ "rgb1:G", "esp:26", "green", [ "v1.3", "h-48", "v96", "h-192", "v-172.8" ] ],
+    [ "rgb1:B", "esp:27", "blue", [ "h-38.4", "v59.2", "v38.4", "h-220.8", "v-172.8" ] ],
+    [ "bz1:2", "esp:18", "green", [ "h-28.8", "v-182.8" ] ],
+    [ "bz1:1", "bb1:bn.18", "black", [ "h-9.6", "v-67.2", "h201.6", "v-249.6", "h-316.8" ] ]
+  ],
+  "dependencies": {}
+}
